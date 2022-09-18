@@ -1,45 +1,39 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+	let from_email = '';
+	let to_name = '';
+	let from_name = '';
+	let message = '';
+  const handleForm=()=>{
+    console.log(from_email,to_name,from_name,message)
+  }
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+<div class="app">
+	<div class="wrapper">
+    <h1 class="title">Using EmailJs with Svelte and vite</h1>
+		<input bind:value={from_email}>
+		<input bind:value={from_name}>
+		<textarea name="" id="" cols="30" rows="10" bind:value={message}></textarea>
+    <button class="btn" on:click={handleForm}>Send Email</button>
+	</div>
+</div>
 
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+	.app{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+    background: rgb(7, 7, 56);
+    color: whitesmoke;
+	}
+.wrapper{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	/* border: solid; */
+}
 </style>
