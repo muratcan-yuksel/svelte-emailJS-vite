@@ -1,10 +1,23 @@
 <script>
-	let from_email = '';
+
+  import emailjs from "@emailjs/browser";
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
+	let email = '';
 	let to_name = '';
-	let from_name = '';
+	let name = '';
 	let message = '';
   const handleForm=()=>{
-    console.log(from_email,to_name,from_name,message)
+    emailjs.send(
+       "your service id",
+        "template id",
+        {
+          to_name: "Murat",
+          from_name: name,
+          message: message,
+          from_email: email,
+        },
+       "public key"
+      );
   }
 </script>
 
@@ -12,8 +25,8 @@
 <div class="app">
 	<div class="wrapper">
     <h1 class="title">Using EmailJs with Svelte and vite</h1>
-		<input bind:value={from_email}>
-		<input bind:value={from_name}>
+		<input bind:value={email}>
+		<input bind:value={name}>
 		<textarea name="" id="" cols="30" rows="10" bind:value={message}></textarea>
     <button class="btn" on:click={handleForm}>Send Email</button>
 	</div>
